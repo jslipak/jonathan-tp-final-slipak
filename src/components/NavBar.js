@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 
-export default function NavBarTest(){
+export default function NavBar(){
     return (
 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
   <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
