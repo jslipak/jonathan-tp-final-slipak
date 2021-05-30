@@ -1,0 +1,31 @@
+.Nav-Style {
+    display: flex;
+    background-color: #dc1a22;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+}
+
+#responsive-navbar-nav{
+    font-size: 20px;
+    justify-content: center;
+    width: 80vw;
+}
+        
+.Logo-Brand {
+    height: 20vmin;
+}
+
+.nav-link {
+    margin: 10px;
+}
+
+@media (max-width: 992px){
+    .Nav-Style{
+    flex-direction: row;
+    }
+    .Logo-Brand, .navbar-toggler{
+        margin: 20px;
+    }
+    
+}
