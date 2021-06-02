@@ -1,6 +1,7 @@
 .Nav-Style {
     display: flex;
-    background-color: #dc1a22;
+    background-color: #DC1E45;
+    /*background-color: #dc1a22;*/
     flex-direction: column;
     align-content: flex-start;
 }
@@ -9,10 +10,6 @@
     font-size: 20px;
     justify-content: center;
     width: 80vw;
-}
-        
-.Logo-Brand {
-    height: 20vmin;
 }
 
 .nav-link {
@@ -26,5 +23,4 @@
     .Logo-Brand, .navbar-toggler{
         margin: 20px;
     }
-    
 }

@@ -1,11 +1,12 @@
 import React from 'react';
 import './NavBar.css';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import logo from '../images/80th food-logos_transparent.png'
+import Logo from './Logo.js'
+import CartWidget from './CartWidget.js'
 export default function NavBar(){
     return (
 <Navbar collapseOnSelect expand="lg" className="Nav-Style" variant="dark">
-  <Navbar.Brand href="#home"><img src={logo} alt="logo80thfood" className="Logo-Brand" /></Navbar.Brand>
+  <Logo />
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="mr-auto">
@@ -21,6 +22,7 @@ export default function NavBar(){
         <NavDropdown.Divider />
         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
       </NavDropdown>
+      <CartWidget />
     </Nav>
   </Navbar.Collapse>
 </Navbar>
