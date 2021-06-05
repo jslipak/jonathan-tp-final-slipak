@@ -2,7 +2,7 @@ import React from 'react';
 import './Logo.css'
 import logo from '../images/80th food-logos_transparent.png'
 
- function Logo() {
+function Logo() {
     return (
         <div >
        <img src={ logo } className="Logo-Brand" alt="logoChoco"/>
