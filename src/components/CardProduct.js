@@ -10,7 +10,9 @@ function CardProduct() {
   }
   function subOneItem(event) {
     console.log(event);
-    return setCounter(counter - 1);
+    counter > 0
+      ? setCounter(counter - 1)
+      : console.log('tiene que ser mayor a 0');
   }
   return (
     <Card style={{ width: '18rem', margin: ' 10px auto' }}>
