@@ -3,6 +3,7 @@ import './NavBar.css';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import Logo from './Logo.js';
 import CartWidget from './CartWidget.js';
+
 export default function NavBar() {
   return (
     <Navbar collapseOnSelect expand="lg" className="Nav-Style" variant="dark">
