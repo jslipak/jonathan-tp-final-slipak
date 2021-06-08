@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
-import Counter from './Counter.js';
+import ItemCount from './ItemCount.js';
 
 function CardProduct() {
   return (
@@ -12,7 +12,7 @@ function CardProduct() {
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </Card.Text>
-        <Counter />
+        <ItemCount />
         <div style={{ margin: '10px auto' }}>
           <Button variant="primary">Agregar al carrito</Button>
         </div>
