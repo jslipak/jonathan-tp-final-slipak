@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ItemList.css';
-import { CardDeck } from 'react-bootstrap';
+import { CardDeck, Spinner } from 'react-bootstrap';
 import Item from './Item.js';
 
 const CHOCOLATE = [
@@ -10,14 +10,39 @@ const CHOCOLATE = [
   { id: 4, name: 'Cabsha', description: 'Rico choclate' },
   { id: 5, name: 'Cabsha', description: 'Rico choclate' },
 ];
-const CardsContainer = (props) => {
+
+const ItemList = (props) => {
+  const [items, setItems] = useState(0);
+
+  let promese = new Promise((resolve, reject) => {
+    setTimeout(function () {
+      let itemsCounter = CHOCOLATE.length;
+      setItems(itemsCounter);
+    }, 2000);
+  });
+  promese.then(console.log('Create delay'));
   return (
-    <CardDeck>
-      {CHOCOLATE.map((item) => {
-        return <Item key={item.id} title={item.name} text={item.description} />;
-      })}
+    <CardDeck className="d-flex justify-content-around">
+      {items > 0 ? (
+        CHOCOLATE.map((item) => {
+          return (
+            <Item key={item.id} title={item.name} text={item.description} />
+          );
+        })
+      ) : (
+        <Spinner animation="border" variant="warning" />
+      )}
     </CardDeck>
   );
 };
 
-export default CardsContainer;
+export default ItemList;
+
+// ? se podrio hacer con useEffect
+// useEffect(() => {
+//const subscription = props.source.subscribe();
+//return () => {
+//// Clean up the subscription
+//subscription.unsubscribe();
+//};
+//});
