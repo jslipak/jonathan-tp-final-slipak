@@ -11,16 +11,21 @@ const CHOCOLATE = [
   { id: 5, name: 'Cabsha', description: 'Rico choclate' },
 ];
 
-const ItemList = (props) => {
+const ItemList = () => {
   const [items, setItems] = useState(0);
 
-  let promese = new Promise((resolve, reject) => {
-    setTimeout(function () {
-      let itemsCounter = CHOCOLATE.length;
-      setItems(itemsCounter);
-    }, 2000);
+  let promise = new Promise((resolve, reject) => {
+    resolve(
+      setTimeout(function () {
+        let itemsCounter = CHOCOLATE.length;
+        setItems(itemsCounter);
+      }, 2000),
+    );
+    reject(console.log('Error'));
   });
-  promese.then(console.log('Create delay'));
+
+  promise.then(console.log('Create delay'));
+
   return (
     <CardDeck className="d-flex justify-content-around">
       {items > 0 ? (
