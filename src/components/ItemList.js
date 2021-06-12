@@ -1,35 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ItemList.css';
 import { CardDeck, Spinner } from 'react-bootstrap';
 import Item from './Item.js';
 
-const CHOCOLATE = [
-  { id: 1, name: 'Bizniken', description: 'Rico choclate' },
-  { id: 2, name: 'Dolca', description: 'Rico choclate' },
-  { id: 3, name: 'Cabsha', description: 'Rico choclate' },
-  { id: 4, name: 'Cabsha', description: 'Rico choclate' },
-  { id: 5, name: 'Cabsha', description: 'Rico choclate' },
-];
-
 const ItemList = () => {
-  const [items, setItems] = useState(0);
-
-  let promise = new Promise((resolve, reject) => {
-    resolve(
-      setTimeout(function () {
-        let itemsCounter = CHOCOLATE.length;
-        setItems(itemsCounter);
-      }, 2000),
-    );
-    reject(console.log('Error'));
-  });
-
-  promise.then(console.log('Create delay'));
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    setTimeout(function () {
+      fetch('http://127.0.0.1:3000/data/chocolate.json')
+        .then((response) => response.json())
+        .then((data) => {
+          setData(data);
+          console.log(data);
+        })
+        .catch((err) => console.log('catch:', err));
+    }, 2000);
+  }, []);
 
   return (
     <CardDeck className="d-flex justify-content-around">
-      {items > 0 ? (
-        CHOCOLATE.map((item) => {
+      {data ? (
+        data.map((item) => {
           return (
             <Item key={item.id} title={item.name} text={item.description} />
           );
@@ -42,12 +33,3 @@ const ItemList = () => {
 };
 
 export default ItemList;
-
-// ? se podrio hacer con useEffect
-// useEffect(() => {
-//const subscription = props.source.subscribe();
-//return () => {
-//// Clean up the subscription
-//subscription.unsubscribe();
-//};
-//});
