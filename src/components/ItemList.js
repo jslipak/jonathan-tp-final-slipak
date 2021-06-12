@@ -7,7 +7,9 @@ const ItemList = () => {
   const [data, setData] = useState(null);
   useEffect(() => {
     setTimeout(function () {
-      fetch('http://127.0.0.1:3000/data/chocolate.json')
+      fetch(
+        'https://github.com/jslipak/jonathan-tp-final-slipak/chocolate.json',
+      )
         .then((response) => response.json())
         .then((data) => {
           setData(data);
