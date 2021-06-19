@@ -1,4 +1,5 @@
 import React from 'react';
+import './BoxForm.css';
 
 function BoxForm(props) {
   return (
