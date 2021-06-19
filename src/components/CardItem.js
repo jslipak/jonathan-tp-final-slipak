@@ -30,4 +30,4 @@ function CardItem(props) {
 
 export default CardItem;
 
-//TODO: --> mas info redirect and send full props to renden ItemDetail
+//TODO: --> mas info redirect and send full props to ren:den ItemDetail
