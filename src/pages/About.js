@@ -9,3 +9,5 @@ function About() {
 }
 
 export default About;
+
+//TODO: make a CV
