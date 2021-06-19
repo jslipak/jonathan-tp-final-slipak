@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './ItemList.css';
 import { CardDeck, Spinner } from 'react-bootstrap';
-import Item from './Item.js';
+import CardItem from './CardItem.js';
 
 const ItemList = () => {
   const [data, setData] = useState(null);
@@ -22,7 +22,7 @@ const ItemList = () => {
       {data ? (
         data.map((item) => {
           return (
-            <Item key={item.id} title={item.name} text={item.description} />
+            <CardItem key={item.id} title={item.name} text={item.description} />
           );
         })
       ) : (

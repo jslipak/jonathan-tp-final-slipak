@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
 import ItemCount from './ItemCount.js';
 
-function CardProduct(props) {
+function CardItem(props) {
   return (
     <Card
       className="shadow-lg p-3 mb-5 bg-body rounded-4"
@@ -17,7 +18,7 @@ function CardProduct(props) {
           className="d-flex mt-4 justify-content-around"
           style={{ margin: '10px auto' }}
         >
-          <Button variant="secondary" href="/product/test">
+          <Button variant="secondary" as={Link} to="/product/test">
             Más Info
           </Button>
           <Button variant="primary">Comprar</Button>
@@ -27,6 +28,6 @@ function CardProduct(props) {
   );
 }
 
-export default CardProduct;
+export default CardItem;
 
-//TODO: mas info redirect and send full props to renden ItemDetail
+//TODO: --> mas info redirect and send full props to renden ItemDetail
