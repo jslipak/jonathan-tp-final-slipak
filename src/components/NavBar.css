@@ -1,26 +1,30 @@
 .Nav-Style {
-    display: flex;
-    background-color: #DC1E45;
-    /*background-color: #dc1a22;*/
-    flex-direction: column;
-    align-content: flex-start;
+  display: flex;
+  background-color: #dc1e45;
+  /*background-color: #dc1a22;*/
+  flex-direction: column;
+  align-content: flex-start;
 }
 
-#responsive-navbar-nav{
-    font-size: 20px;
-    justify-content: center;
-    width: 80vw;
+#responsive-navbar-nav {
+  font-size: 20px;
+  justify-content: center;
+  width: 80vw;
 }
 
 .nav-link {
-    margin: 10px;
+  margin: 10px;
 }
-
-@media (max-width: 992px){
-    .Nav-Style{
+.EmailContact {
+  height: 33px;
+  width: 33px;
+}
+@media (max-width: 992px) {
+  .Nav-Style {
     flex-direction: row-reverse;
-    }
-    .Logo-Brand, .navbar-toggler{
-        margin: 20px;
-    }
+  }
+  .Logo-Brand,
+  .navbar-toggler {
+    margin: 20px;
+  }
 }

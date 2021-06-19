@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 import Logo from './Logo.js';
 import CartWidget from './CartWidget.js';
+import Envelop from '../images/email.svg';
 
 export default function NavBar() {
   return (
@@ -22,6 +23,9 @@ export default function NavBar() {
             Nuestra Empresa
           </Nav.Link>
           <CartWidget />
+          <Nav.Link as={Link} to="/contact">
+            <img src={Envelop} alt="contactImages" className="EmailContact" />
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

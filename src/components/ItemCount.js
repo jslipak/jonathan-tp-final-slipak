@@ -16,13 +16,16 @@ function Counter() {
   }
 
   return (
-    <div>
-      <Button variant="success" onClick={addOneItem}>
-        +
-      </Button>
-      <div>{counter}</div>
-      <Button variant="danger" onClick={subOneItem}>
+    <div className="d-flex justify-content-center m-4">
+      <Button style={{ width: '2rem' }} variant="danger" onClick={subOneItem}>
         -
+      </Button>
+      <div className="m-3" style={{ width: '2rem' }}>
+        {counter}
+      </div>
+
+      <Button style={{ width: '2rem' }} variant="success" onClick={addOneItem}>
+        +
       </Button>
     </div>
   );
