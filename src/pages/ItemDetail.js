@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './ItemDetail.css';
+import Counter from '../components/ItemCount';
 
 function ItemDetail(props) {
-  console.log(props);
+  const [itemCounter, setItemCounter] = useState(0);
+  useEffect((event) => {
+    console.log(itemCounter);
+  });
   return (
     <main>
       <div className="card">
@@ -59,8 +63,7 @@ function ItemDetail(props) {
         </div>
         <div className="card__footer">
           <div className="recommend">
-            <p>Recommended by</p>
-            <h3>Andrew Palmer</h3>
+            <Counter />
           </div>
           <div className="action">
             <button type="button">Add to cart</button>

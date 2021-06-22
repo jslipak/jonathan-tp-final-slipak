@@ -22,7 +22,12 @@ const ItemList = () => {
       {data ? (
         data.map((item) => {
           return (
-            <CardItem key={item.id} title={item.name} text={item.description} />
+            <CardItem
+              key={item.id}
+              title={item.name}
+              text={item.description}
+              productId={item.id}
+            />
           );
         })
       ) : (

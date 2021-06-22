@@ -4,6 +4,7 @@ import { Card, Button } from 'react-bootstrap';
 import ItemCount from './ItemCount.js';
 
 function CardItem(props) {
+  console.log(props);
   return (
     <Card
       className="shadow-lg p-3 mb-5 bg-body rounded-4"
@@ -22,7 +23,7 @@ function CardItem(props) {
             variant="secondary"
             as={Link}
             to={{
-              pathname: '/product/test',
+              pathname: `/product/${props.productId}`,
               state: {
                 text: props.text,
                 title: props.title,

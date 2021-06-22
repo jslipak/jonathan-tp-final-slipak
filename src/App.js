@@ -23,7 +23,7 @@ function App() {
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/types-candy" component={Candies} />
             <Route exact path="/contact" component={Contact} />
-            <Route exact path="/product/test" component={ItemDetail} />
+            <Route exact path="/product/:product_id" component={ItemDetail} />
             <Route component={NotFound} />
           </Switch>
         </Container>
