@@ -18,7 +18,17 @@ function CardItem(props) {
           className="d-flex mt-4 justify-content-around"
           style={{ margin: '10px auto' }}
         >
-          <Button variant="secondary" as={Link} to="/product/test">
+          <Button
+            variant="secondary"
+            as={Link}
+            to={{
+              pathname: '/product/test',
+              state: {
+                text: props.text,
+                title: props.title,
+              },
+            }}
+          >
             Más Info
           </Button>
           <Button variant="primary">Comprar</Button>

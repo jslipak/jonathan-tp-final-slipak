@@ -1,7 +1,8 @@
 import React from 'react';
 import './ItemDetail.css';
 
-function ItemDetail() {
+function ItemDetail(props) {
+  console.log(props);
   return (
     <main>
       <div className="card">
@@ -16,7 +17,7 @@ function ItemDetail() {
         <div className="card__body">
           <div className="half">
             <div className="featured_text">
-              <h1>Nurton</h1>
+              <h1>{props.location.state.title}</h1>
               <p className="sub">Office Chair</p>
               <p className="price">$210.00</p>
             </div>
@@ -29,12 +30,7 @@ function ItemDetail() {
           </div>
           <div className="half">
             <div className="description">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-                voluptatem nam pariatur voluptate perferendis, asperiores
-                aspernatur! Porro similique consequatur, nobis soluta minima,
-                quasi laboriosam hic cupiditate perferendis esse numquam magni.
-              </p>
+              <p>{props.location.state.text} </p>
             </div>
             <span className="stock">
               <i className="fa fa-pen"></i> In stock
@@ -76,3 +72,5 @@ function ItemDetail() {
 }
 
 export default ItemDetail;
+
+// NOTE: se que hay otra forma de pasar datos que esta , pero hasta que veamos base de datos voy a usar esta forma
