@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ItemListContainer from '../components/ItemListContainer.js';
 
 function Candies() {

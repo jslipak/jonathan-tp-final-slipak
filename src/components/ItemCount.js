@@ -1,30 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from 'react-bootstrap';
 
-function Counter() {
-  const [counter, setCounter] = useState(0);
-
-  function addOneItem(event) {
-    console.log(event);
-    return setCounter(counter + 1);
-  }
-  function subOneItem(event) {
-    console.log(event);
-    counter > 0
-      ? setCounter(counter - 1)
-      : console.log('tiene que ser mayor a 0');
-  }
-
+function Counter(props) {
   return (
     <div className="d-flex justify-content-center m-4">
-      <Button style={{ width: '2rem' }} variant="danger" onClick={subOneItem}>
+      <Button
+        style={{ width: '2rem' }}
+        variant="danger"
+        onClick={props.subItem}
+      >
         -
       </Button>
       <div className="m-3" style={{ width: '2rem' }}>
-        {counter}
+        {props.counter}
       </div>
 
-      <Button style={{ width: '2rem' }} variant="success" onClick={addOneItem}>
+      <Button
+        style={{ width: '2rem' }}
+        variant="success"
+        onClick={props.addItem}
+      >
         +
       </Button>
     </div>

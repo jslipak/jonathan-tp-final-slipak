@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
-import ItemCount from './ItemCount.js';
+import Counter from './ItemCount.js';
 
 function CardItem(props) {
   console.log(props);
+  const [counter, setCounter] = useState(0);
+
+  function addOneItem(event) {
+    console.log(event);
+    return setCounter(counter + 1);
+  }
+  function subOneItem(event) {
+    console.log(event);
+    counter > 0
+      ? setCounter(counter - 1)
+      : console.log('tiene que ser mayor a 0');
+  }
+  useEffect(() => {
+    console.log('Change Counter State');
+  });
+
   return (
     <Card
       className="shadow-lg p-3 mb-5 bg-body rounded-4"
@@ -14,7 +30,8 @@ function CardItem(props) {
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <Card.Text>{props.text}</Card.Text>
-        <ItemCount />
+        <Counter addItem={addOneItem} subItem={subOneItem} counter={counter} />
+
         <div
           className="d-flex mt-4 justify-content-around"
           style={{ margin: '10px auto' }}
@@ -32,7 +49,11 @@ function CardItem(props) {
           >
             Más Info
           </Button>
-          <Button variant="primary">Comprar</Button>
+          {counter > 0 ? (
+            <Button variant="primary">Comprar</Button>
+          ) : (
+            <Button variant="primary disabled">Comprar</Button>
+          )}
         </div>
       </Card.Body>
     </Card>

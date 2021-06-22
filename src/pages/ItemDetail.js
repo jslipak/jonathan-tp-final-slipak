@@ -3,16 +3,28 @@ import './ItemDetail.css';
 import Counter from '../components/ItemCount';
 
 function ItemDetail(props) {
-  const [itemCounter, setItemCounter] = useState(0);
-  useEffect((event) => {
-    console.log(itemCounter);
+  const [counter, setCounter] = useState(0);
+
+  function addOneItem(event) {
+    console.log(event);
+    return setCounter(counter + 1);
+  }
+  function subOneItem(event) {
+    console.log(event);
+    counter > 0
+      ? setCounter(counter - 1)
+      : console.log('tiene que ser mayor a 0');
+  }
+  useEffect(() => {
+    console.log('Change Counter State');
   });
+
   return (
     <main>
       <div className="card">
         <div className="card__title">
           <div className="icon">
-            <a href="#">
+            <a href="/notFound">
               <i className="fa fa-arrow-left"></i>
             </a>
           </div>
@@ -63,10 +75,24 @@ function ItemDetail(props) {
         </div>
         <div className="card__footer">
           <div className="recommend">
-            <Counter />
+            <Counter
+              addItem={addOneItem}
+              subItem={subOneItem}
+              counter={counter}
+            />
           </div>
           <div className="action">
-            <button type="button">Add to cart</button>
+            {counter > 0 ? (
+              <button type="button">Add to cart</button>
+            ) : (
+              <button
+                type="button"
+                className="btn btn-primary btn-lg disabled"
+                disabled
+              >
+                add Something
+              </button>
+            )}
           </div>
         </div>
       </div>
