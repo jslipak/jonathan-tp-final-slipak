@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
 import Counter from './ItemCount.js';
+import { useOrder, useOrderUpdate } from './CartContext';
 
 function CardItem(props) {
-  console.log(props);
+  const order = useOrder();
+  const setOrder = useOrderUpdate();
+  console.log(props, order);
   const [counter, setCounter] = useState(0);
 
   function addOneItem(event) {
@@ -39,18 +42,14 @@ function CardItem(props) {
           <Button
             variant="secondary"
             as={Link}
-            to={{
-              pathname: `/product/${props.productId}`,
-              state: {
-                text: props.text,
-                title: props.title,
-              },
-            }}
+            to={`/product/${props.productId}`}
           >
             Más Info
           </Button>
           {counter > 0 ? (
-            <Button variant="primary">Comprar</Button>
+            <Button variant="primary" onClick={setOrder}>
+              Comprar
+            </Button>
           ) : (
             <Button variant="primary disabled">Comprar</Button>
           )}

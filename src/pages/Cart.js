@@ -1,9 +1,9 @@
 import React from 'react';
-
+import SummaryOrder from '../components/SummaryOrder.js';
 function Cart() {
   return (
     <div>
-      <p>Cart </p>
+      <SummaryOrder />
     </div>
   );
 }
