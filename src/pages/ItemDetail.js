@@ -9,7 +9,6 @@ function ItemDetail() {
   const item_id = useParams();
   const filter_id = item_id.product_id;
   useEffect(() => {
-    console.log(filter_id);
     setTimeout(function () {
       fetch('https://jslipak.github.io/data/chocolate.json')
         .then((response) => response.json())
@@ -26,9 +25,13 @@ function ItemDetail() {
     <>
       {data ? (
         <BoxItemDetail
-          title={data.description}
-          text={data.name}
+          title={data.name}
+          text={data.description}
           productId={data.id}
+          price={data.precio}
+          stock={data.stock}
+          photo={data.photo_url}
+          thumb={data.thumb}
         />
       ) : (
         <Spinner animation="border" variant="warning" />

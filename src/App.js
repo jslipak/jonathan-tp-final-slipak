@@ -14,34 +14,32 @@ import { CartContext } from './components/CartContext';
 function App() {
   return (
     <Router>
-      <div className="App">
-        <NavBar />
-        <Container className="contenedor">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/cart">
-              <CartContext>
+      <CartContext>
+        <div className="App">
+          <NavBar />
+          <Container className="contenedor">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/about" component={About} />
+              <Route exact path="/cart">
                 <Cart />
-              </CartContext>
-            </Route>
-            <Route exact path="/types-candy">
-              <CartContext>
+              </Route>
+              <Route exact path="/types-candy">
                 <Candies />
-              </CartContext>
-            </Route>
-            <Route exact path="/product/:product_id">
-              <CartContext>
+              </Route>
+              <Route exact path="/product/:product_id">
                 <ItemDetail />{' '}
-              </CartContext>
-            </Route>
-            <Route exact path="/contact" component={Contact} />
-            <Route component={NotFound} />
-          </Switch>
-        </Container>
-      </div>
+              </Route>
+              <Route exact path="/contact" component={Contact} />
+              <Route component={NotFound} />
+            </Switch>
+          </Container>
+        </div>
+      </CartContext>
     </Router>
   );
 }
 
 export default App;
+
+// NOTE: Si pones el context no global cuando vas una de las rutas que no esta wrapeada se blanquea la orden

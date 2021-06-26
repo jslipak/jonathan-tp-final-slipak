@@ -11,11 +11,17 @@ export function useOrderUpdate() {
 }
 
 export function CartContext({ children }) {
-  const [order, setOrder] = useState();
-  const insertOrder = () => {
-    let data = [{ id: 4, title: 'Canario', quantity: 3, price: 345 }];
-    console.log(data);
-    return setOrder(data);
+  const [order, setOrder] = useState([]);
+  const insertOrder = (productId, title, counter, precio) => {
+    const tmp = {
+      id: productId,
+      title: title,
+      quantity: counter,
+      price: precio,
+    };
+    const ord = order;
+    ord.push(tmp);
+    return setOrder(ord);
   };
   return (
     <OrderContext.Provider value={order}>

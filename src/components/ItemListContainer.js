@@ -8,7 +8,6 @@ const DESCRIPTION =
 const TEXTBTN = 'Nuestra Empresa';
 
 const ItemListContainer = (props) => {
-  console.log(props);
   return (
     <>
       <Jumbo title={GREETTING} description={DESCRIPTION} buttonText={TEXTBTN} />

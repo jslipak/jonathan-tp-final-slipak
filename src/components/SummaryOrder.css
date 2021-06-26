@@ -1,3 +1,6 @@
+.scrollV {
+  overflow: auto;
+}
 .title {
   margin-bottom: 5vh;
 }
@@ -22,6 +25,7 @@
   padding: 4vh 5vh;
   border-bottom-left-radius: 1rem;
   border-top-left-radius: 1rem;
+  border: 2px solid #dc1e45;
 }
 
 @media (max-width: 767px) {

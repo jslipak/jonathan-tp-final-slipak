@@ -11,7 +11,6 @@ const ItemList = () => {
         .then((response) => response.json())
         .then((data) => {
           setData(data);
-          console.log(data);
         })
         .catch((err) => console.log('catch:', err));
     }, 2000);
@@ -21,12 +20,17 @@ const ItemList = () => {
     <CardDeck className="d-flex justify-content-around">
       {data ? (
         data.map((item) => {
+          console.log(item);
           return (
             <CardItem
               key={item.id}
               title={item.name}
               text={item.description}
               productId={item.id}
+              price={item.precio}
+              stock={item.stock}
+              photo={item.photo_url}
+              thumb={data.thumb}
             />
           );
         })

@@ -7,15 +7,12 @@ import { useOrder, useOrderUpdate } from './CartContext';
 function CardItem(props) {
   const order = useOrder();
   const setOrder = useOrderUpdate();
-  console.log(props, order);
   const [counter, setCounter] = useState(0);
 
-  function addOneItem(event) {
-    console.log(event);
+  function addOneItem() {
     return setCounter(counter + 1);
   }
   function subOneItem(event) {
-    console.log(event);
     counter > 0
       ? setCounter(counter - 1)
       : console.log('tiene que ser mayor a 0');
@@ -29,10 +26,11 @@ function CardItem(props) {
       className="shadow-lg p-3 mb-5 bg-body rounded-4"
       style={{ width: '18rem', margin: ' 10px auto' }}
     >
-      <Card.Img variant="top" src="http://via.placeholder.com/100px100" />
+      <Card.Img variant="top" src={props.photo} />
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <Card.Text>{props.text}</Card.Text>
+        <Card.Text>${props.price}</Card.Text>
         <Counter addItem={addOneItem} subItem={subOneItem} counter={counter} />
 
         <div
@@ -47,11 +45,22 @@ function CardItem(props) {
             Más Info
           </Button>
           {counter > 0 ? (
-            <Button variant="primary" onClick={setOrder}>
-              Comprar
+            <Button
+              variant="primary"
+              onClick={() =>
+                setOrder(
+                  props.productId,
+                  props.title,
+                  counter,
+                  props.precio,
+                  props.thumb,
+                )
+              }
+            >
+              Agregar
             </Button>
           ) : (
-            <Button variant="primary disabled">Comprar</Button>
+            <Button variant="primary disabled">Agregar</Button>
           )}
         </div>
       </Card.Body>
@@ -62,3 +71,5 @@ function CardItem(props) {
 export default CardItem;
 
 //TODO: --> mas info redirect and send full props to ren:den ItemDetail
+//TODO: mandar un mensaje cuando agregas un item y volver el contador a 0 de ese item
+//TODO: que tan estricto tengo que ser con el Stock

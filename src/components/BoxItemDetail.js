@@ -7,14 +7,11 @@ function BoxItemDetail(props) {
   const [counter, setCounter] = useState(0);
   const order = useOrder();
   const setOrder = useOrderUpdate();
-  console.log(order);
 
   function addOneItem(event) {
-    console.log(event);
     return setCounter(counter + 1);
   }
   function subOneItem(event) {
-    console.log(event);
     counter > 0
       ? setCounter(counter - 1)
       : console.log('tiene que ser mayor a 0');
@@ -86,7 +83,15 @@ function BoxItemDetail(props) {
               <button
                 type="button"
                 data-product-id={props.productId}
-                onClick={setOrder}
+                onClick={() =>
+                  setOrder(
+                    props.productId,
+                    props.title,
+                    counter,
+                    props.price,
+                    props.thumb,
+                  )
+                }
               >
                 Add to cart
               </button>
@@ -107,3 +112,5 @@ function BoxItemDetail(props) {
 }
 
 export default BoxItemDetail;
+
+//TODO: mandar un mensaje cuando agregas un item y volver el contador a 0 de ese item

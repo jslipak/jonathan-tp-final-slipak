@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './SummaryOrder.css';
 import ItemCart from './ItemCart.js';
+import { useOrder } from '../components/CartContext';
 function SummaryOrder() {
+  const Order = useOrder();
   return (
     <div className="card">
       <div className="row">
@@ -18,13 +20,12 @@ function SummaryOrder() {
               </div>
             </div>
           </div>
-          <ItemCart />
-          <ItemCart />
-          <ItemCart />
-          <ItemCart />
-          <ItemCart />
-          <ItemCart />
-          <ItemCart />
+
+          <div className="scrollV">
+            {Order.map((item) => {
+              return <ItemCart />;
+            })}
+          </div>
           <div className="back-to-shop">
             <a href="/ttt">←</a>
             <span className="text-muted">Back to shop</span>
@@ -33,7 +34,7 @@ function SummaryOrder() {
         <div className="col-md-4 summary">
           <div>
             <h5>
-              <b>Summary</b>
+              <b>Resumen</b>
             </h5>
           </div>
           <hr />
@@ -44,20 +45,21 @@ function SummaryOrder() {
             <div className="col text-right">€ 132.00</div>
           </div>
           <form>
-            <p>SHIPPING</p>{' '}
+            <p>Envio</p>{' '}
             <select>
               <option className="text-muted">Standard-Delivery- €5.00</option>
             </select>
-            <p>GIVE CODE</p> <input id="code" placeholder="Enter your code" />
+            <p>Cupon de Descuento</p>{' '}
+            <input id="code" placeholder="Enter your code" />
           </form>
           <div
             className="row"
             style={{ borderTop: '1px solid rgba(0,0,0,.1)', padding: '2vh 0' }}
           >
-            <div className="col">TOTAL PRICE</div>
-            <div className="col text-right">€ 137.00</div>
+            <div className="col">TOTAL</div>
+            <div className="col text-right">$ 137.00</div>
           </div>{' '}
-          <button className="btn btn-dark">CHECKOUT</button>
+          <button className="btn btn-dark">Comprar</button>
         </div>
       </div>
     </div>
