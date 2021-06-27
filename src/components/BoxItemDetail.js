@@ -5,13 +5,12 @@ import { useOrder, useOrderUpdate } from './CartContext';
 
 function BoxItemDetail(props) {
   const [counter, setCounter] = useState(0);
-  const order = useOrder();
   const setOrder = useOrderUpdate();
 
-  function addOneItem(event) {
+  function addOneItem() {
     return setCounter(counter + 1);
   }
-  function subOneItem(event) {
+  function subOneItem() {
     counter > 0
       ? setCounter(counter - 1)
       : console.log('tiene que ser mayor a 0');
@@ -32,13 +31,10 @@ function BoxItemDetail(props) {
             <div className="featured_text">
               <h1>{props.title}</h1>
               <p className="sub">Office Chair</p>
-              <p className="price">$210.00</p>
+              <p className="price">$ {props.price}</p>
             </div>
-            <div className="image">
-              <img
-                src="https://images-na.ssl-images-amazon.com/images/I/613A7vcgJ4L._SL1500_.jpg"
-                alt=""
-              />
+            <div className="justify-content-center ">
+              <img src={props.photo} alt="" />
             </div>
           </div>
           <div className="half">
@@ -66,7 +62,7 @@ function BoxItemDetail(props) {
                   <i className="fa fa-star-o"></i>
                 </li>
               </ul>
-              <span>(64 reviews)</span>
+              <span>({props.stock} Unidades)</span>
             </div>
           </div>
         </div>
@@ -93,7 +89,7 @@ function BoxItemDetail(props) {
                   )
                 }
               >
-                Add to cart
+                agregar al carrito
               </button>
             ) : (
               <button
@@ -101,7 +97,7 @@ function BoxItemDetail(props) {
                 className="btn btn-primary btn-lg disabled"
                 disabled
               >
-                add Something
+                agregar al carrito
               </button>
             )}
           </div>

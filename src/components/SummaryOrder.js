@@ -4,6 +4,7 @@ import ItemCart from './ItemCart.js';
 import { useOrder } from '../components/CartContext';
 function SummaryOrder() {
   const Order = useOrder();
+  console.log(Order);
   return (
     <div className="card">
       <div className="row">
@@ -23,7 +24,17 @@ function SummaryOrder() {
 
           <div className="scrollV">
             {Order.map((item) => {
-              return <ItemCart />;
+              return (
+                <ItemCart
+                  key={item.id}
+                  thumb={item.thumb}
+                  category={item.category}
+                  title={item.title}
+                  quantity={item.quantity}
+                  price={item.price}
+                  thumb={item.thumbnail}
+                />
+              );
             })}
           </div>
           <div className="back-to-shop">

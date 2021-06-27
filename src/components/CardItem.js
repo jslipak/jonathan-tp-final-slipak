@@ -20,7 +20,6 @@ function CardItem(props) {
   useEffect(() => {
     console.log('Change Counter State');
   });
-
   return (
     <Card
       className="shadow-lg p-3 mb-5 bg-body rounded-4"
@@ -52,7 +51,7 @@ function CardItem(props) {
                   props.productId,
                   props.title,
                   counter,
-                  props.precio,
+                  props.price,
                   props.thumb,
                 )
               }

@@ -30,7 +30,7 @@ const ItemList = () => {
               price={item.precio}
               stock={item.stock}
               photo={item.photo_url}
-              thumb={data.thumb}
+              thumb={item.thumb}
             />
           );
         })
