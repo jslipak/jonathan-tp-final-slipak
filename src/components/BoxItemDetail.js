@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Counter from './ItemCount';
 import './BoxItemDetail.css';
-import { useOrder, useOrderUpdate } from './CartContext';
+import { useOrderUpdate } from './CartContext';
 
 function BoxItemDetail(props) {
   const [counter, setCounter] = useState(0);

@@ -34,9 +34,9 @@ function ItemCart(props) {
           <div className="row"></div>
         </div>
         <div className="col">
-          <a onClick={() => deleteItem(props.index)}>
+          <link onClick={() => deleteItem(props.index)}>
             <img src={Delete} alt="delete" style={{ height: '16px' }} />
-          </a>
+          </link>
         </div>
         <div className="col">
           <div className="row"></div>{' '}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './SummaryOrder.css';
 import ItemCart from './ItemCart.js';
 import { useOrder } from '../components/CartContext';
@@ -32,7 +32,6 @@ function SummaryOrder() {
                   title={item.title}
                   quantity={item.quantity}
                   price={item.price}
-                  thumb={item.thumbnail}
                   index={index}
                 />
               );
