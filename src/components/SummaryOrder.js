@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import './SummaryOrder.css';
 import ItemCart from './ItemCart.js';
 import { useOrder } from '../components/CartContext';
 function SummaryOrder() {
   const Order = useOrder();
-  console.log(Order);
+  useEffect(() => {}, [Order]);
   return (
     <div className="card">
       <div className="row">
@@ -17,13 +17,13 @@ function SummaryOrder() {
                 </h4>
               </div>
               <div className="col align-self-center text-right text-muted">
-                3 items
+                {Order.length} items
               </div>
             </div>
           </div>
 
           <div className="scrollV">
-            {Order.map((item) => {
+            {Order.map((item, index) => {
               return (
                 <ItemCart
                   key={item.id}
@@ -33,6 +33,7 @@ function SummaryOrder() {
                   quantity={item.quantity}
                   price={item.price}
                   thumb={item.thumbnail}
+                  index={index}
                 />
               );
             })}
@@ -51,9 +52,11 @@ function SummaryOrder() {
           <hr />
           <div className="row">
             <div className="col" style={{ paddingLeft: 0 }}>
-              ITEMS 3
+              ITEMS {Order.length}
             </div>
-            <div className="col text-right">€ 132.00</div>
+            <div className="col text-right">
+              ${Order.reduce((a, b) => a + b.price * b.quantity, 0)}
+            </div>
           </div>
           <form>
             <p>Envio</p>{' '}

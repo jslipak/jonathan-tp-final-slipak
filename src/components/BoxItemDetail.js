@@ -86,6 +86,7 @@ function BoxItemDetail(props) {
                     counter,
                     props.price,
                     props.thumb,
+                    props.category,
                   )
                 }
               >

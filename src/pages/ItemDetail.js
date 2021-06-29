@@ -32,6 +32,7 @@ function ItemDetail() {
           stock={data.stock}
           photo={data.photo_url}
           thumb={data.thumb}
+          category={data.category}
         />
       ) : (
         <Spinner animation="border" variant="warning" />

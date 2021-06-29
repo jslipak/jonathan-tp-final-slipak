@@ -20,7 +20,6 @@ const ItemList = () => {
     <CardDeck className="d-flex justify-content-around">
       {data ? (
         data.map((item) => {
-          console.log(item);
           return (
             <CardItem
               key={item.id}
@@ -31,6 +30,7 @@ const ItemList = () => {
               stock={item.stock}
               photo={item.photo_url}
               thumb={item.thumb}
+              category={item.category}
             />
           );
         })

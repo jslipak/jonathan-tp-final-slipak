@@ -2,24 +2,45 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
 import Counter from './ItemCount.js';
-import { useOrder, useOrderUpdate } from './CartContext';
+import { useOrder, useOrderUpdate, useOrderChange } from './CartContext';
 
 function CardItem(props) {
   const order = useOrder();
   const setOrder = useOrderUpdate();
+  const updateOrder = useOrderChange();
   const [counter, setCounter] = useState(0);
 
   function addOneItem() {
     return setCounter(counter + 1);
   }
-  function subOneItem(event) {
+  function subOneItem() {
     counter > 0
       ? setCounter(counter - 1)
       : console.log('tiene que ser mayor a 0');
   }
-  useEffect(() => {
-    console.log('Change Counter State');
-  });
+  function addItem(event) {
+    event.preventDefault();
+    const index = order.findIndex((element) => element.id === props.productId);
+    if (index === -1) {
+      console.log('teauoe');
+      setOrder(
+        props.productId,
+        props.title,
+        counter,
+        props.price,
+        props.thumb,
+        props.category,
+      );
+    } else {
+      const cantidad = order[index].quantity + counter;
+      updateOrder(cantidad, index);
+
+      console.log(order);
+    }
+    setCounter(0);
+  }
+
+  useEffect(() => {});
   return (
     <Card
       className="shadow-lg p-3 mb-5 bg-body rounded-4"
@@ -44,18 +65,7 @@ function CardItem(props) {
             Más Info
           </Button>
           {counter > 0 ? (
-            <Button
-              variant="primary"
-              onClick={() =>
-                setOrder(
-                  props.productId,
-                  props.title,
-                  counter,
-                  props.price,
-                  props.thumb,
-                )
-              }
-            >
+            <Button variant="primary" onClick={addItem}>
               Agregar
             </Button>
           ) : (
@@ -68,7 +78,3 @@ function CardItem(props) {
 }
 
 export default CardItem;
-
-//TODO: --> mas info redirect and send full props to ren:den ItemDetail
-//TODO: mandar un mensaje cuando agregas un item y volver el contador a 0 de ese item
-//TODO: que tan estricto tengo que ser con el Stock

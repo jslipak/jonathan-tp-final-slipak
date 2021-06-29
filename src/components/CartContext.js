@@ -1,6 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 export const OrderContext = React.createContext();
 export const OrderUpdateContext = React.createContext();
+export const OrderChangeContext = React.createContext();
+export const OrderDeleteContext = React.createContext();
 
 // Costume hook
 export function useOrder() {
@@ -10,24 +12,49 @@ export function useOrderUpdate() {
   return useContext(OrderUpdateContext);
 }
 
+export function useOrderChange() {
+  return useContext(OrderChangeContext);
+}
+
+export function useOrderDelete() {
+  return useContext(OrderDeleteContext);
+}
 export function CartContext({ children }) {
   const [order, setOrder] = useState([]);
-  const insertOrder = (productId, title, counter, precio, thumb) => {
+  const insertOrder = (productId, title, counter, precio, thumb, category) => {
     const tmp = {
       id: productId,
       title: title,
       quantity: counter,
       price: precio,
       thumbnail: thumb,
+      category: category,
     };
     const ord = order;
     ord.push(tmp);
     return setOrder(ord);
   };
+  const changeQuantity = (quantity, index) => {
+    let ord = order;
+    ord[index].quantity = quantity;
+    return setOrder(ord);
+  };
+
+  const deleteOrderItem = (i) => {
+    let tmp = order;
+    tmp.splice(i, 1);
+    console.log(tmp);
+    setOrder(tmp);
+  };
+
   return (
     <OrderContext.Provider value={order}>
       <OrderUpdateContext.Provider value={insertOrder}>
-        {children}
+        <OrderChangeContext.Provider value={changeQuantity}>
+          <OrderDeleteContext.Provider value={deleteOrderItem}>
+            {children}
+          </OrderDeleteContext.Provider>
+        </OrderChangeContext.Provider>
       </OrderUpdateContext.Provider>
     </OrderContext.Provider>
   );

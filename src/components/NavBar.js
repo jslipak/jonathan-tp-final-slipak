@@ -22,6 +22,7 @@ export default function NavBar() {
           <Nav.Link as={Link} to="/about">
             Nuestra Empresa
           </Nav.Link>
+          {/*CW.length > 0 ? <CartWidget /> : <div></div> */}
           <CartWidget />
           <Nav.Link as={Link} to="/contact">
             <img src={Envelop} alt="contactImages" className="EmailContact" />
@@ -31,3 +32,5 @@ export default function NavBar() {
     </Navbar>
   );
 }
+
+// FIX: if CW mayor a 0 show <CartWidget /> --> ya agregue un useEffect en CartContext
