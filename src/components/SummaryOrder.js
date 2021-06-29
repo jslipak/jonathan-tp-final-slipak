@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SummaryOrder.css';
 import ItemCart from './ItemCart.js';
 import { useOrder } from '../components/CartContext';
 function SummaryOrder() {
   const Order = useOrder();
-  useEffect(() => {}, [Order]);
+
   return (
     <div className="card">
       <div className="row">
@@ -68,7 +68,10 @@ function SummaryOrder() {
           </form>
           <div
             className="row"
-            style={{ borderTop: '1px solid rgba(0,0,0,.1)', padding: '2vh 0' }}
+            style={{
+              borderTop: '1px solid rgba(0,0,0,.1)',
+              padding: '2vh 0',
+            }}
           >
             <div className="col">TOTAL</div>
             <div className="col text-right">$ 137.00</div>

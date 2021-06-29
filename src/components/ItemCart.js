@@ -4,6 +4,8 @@ import Delete from '../images/delete.svg';
 import { useOrderDelete, useOrderChange } from '../components/CartContext';
 function ItemCart(props) {
   const deleteItem = useOrderDelete();
+  const itemCounterChange = useOrderChange();
+
   return (
     <div className="row border-top border-bottom">
       <div className="row main align-items-center">
@@ -19,10 +21,10 @@ function ItemCart(props) {
             className="col"
             counter={props.quantity}
             subItem={() => {
-              console.log('aca funcion que tengo que escribir');
+              itemCounterChange(props.quantity - 1, props.index);
             }}
             addItem={() => {
-              console.log('aca funcion que tengo que escribir');
+              itemCounterChange(props.quantity + 1, props.index);
             }}
           />
         </div>
@@ -45,15 +47,3 @@ function ItemCart(props) {
 }
 
 export default ItemCart;
-
-//<div className="col">
-//<a href="/ttt" className="btn btn-danger">
-//-
-//</a>
-//<a href="/ttt" className="fs-2">
-//{props.quantity}
-//</a>
-//<a href="/ttt" className="btn btn-success">
-//+
-//</a>{' '}
-//</div>

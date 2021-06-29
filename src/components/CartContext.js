@@ -30,18 +30,20 @@ export function CartContext({ children }) {
       thumbnail: thumb,
       category: category,
     };
-    const ord = order;
+    const ord = [...order];
     ord.push(tmp);
     return setOrder(ord);
   };
   const changeQuantity = (quantity, index) => {
-    let ord = order;
-    ord[index].quantity = quantity;
-    return setOrder(ord);
+    if (quantity >= 0) {
+      let ord = [...order];
+      ord[index].quantity = quantity;
+      return setOrder(ord);
+    }
   };
 
   const deleteOrderItem = (i) => {
-    let tmp = order;
+    let tmp = [...order];
     tmp.splice(i, 1);
     console.log(tmp);
     setOrder(tmp);
@@ -59,3 +61,5 @@ export function CartContext({ children }) {
     </OrderContext.Provider>
   );
 }
+
+//TODO: refactoring to be one context
