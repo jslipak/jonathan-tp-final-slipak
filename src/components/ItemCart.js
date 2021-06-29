@@ -5,7 +5,7 @@ import { useOrderDelete, useOrderChange } from '../components/CartContext';
 function ItemCart(props) {
   const deleteItem = useOrderDelete();
   const itemCounterChange = useOrderChange();
-
+  console.log(props);
   return (
     <div className="row border-top border-bottom">
       <div className="row main align-items-center">

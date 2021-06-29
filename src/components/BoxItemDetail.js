@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import Counter from './ItemCount';
 import './BoxItemDetail.css';
-import { useOrderUpdate } from './CartContext';
+import { useOrder, useOrderUpdate, useOrderChange } from './CartContext';
 
 function BoxItemDetail(props) {
   const [counter, setCounter] = useState(0);
+  const order = useOrder();
   const setOrder = useOrderUpdate();
-
+  const updateOrder = useOrderChange();
   function addOneItem() {
     return setCounter(counter + 1);
   }
@@ -14,6 +15,28 @@ function BoxItemDetail(props) {
     counter > 0
       ? setCounter(counter - 1)
       : console.log('tiene que ser mayor a 0');
+  }
+
+  function addItem(event) {
+    event.preventDefault();
+    const index = order.findIndex((element) => element.id === props.productId);
+    if (index === -1) {
+      console.log('teauoe');
+      setOrder(
+        props.productId,
+        props.title,
+        counter,
+        props.price,
+        props.thumb,
+        props.category,
+      );
+    } else {
+      const cantidad = order[index].quantity + counter;
+      updateOrder(cantidad, index);
+
+      console.log(order);
+    }
+    setCounter(0);
   }
   return (
     <main>
@@ -79,16 +102,7 @@ function BoxItemDetail(props) {
               <button
                 type="button"
                 data-product-id={props.productId}
-                onClick={() =>
-                  setOrder(
-                    props.productId,
-                    props.title,
-                    counter,
-                    props.price,
-                    props.thumb,
-                    props.category,
-                  )
-                }
+                onClick={addItem}
               >
                 agregar al carrito
               </button>

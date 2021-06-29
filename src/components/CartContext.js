@@ -27,7 +27,7 @@ export function CartContext({ children }) {
       title: title,
       quantity: counter,
       price: precio,
-      thumbnail: thumb,
+      thumb: thumb,
       category: category,
     };
     const ord = [...order];
