@@ -5,7 +5,6 @@ import { useOrderDelete, useOrderChange } from '../components/CartContext';
 function ItemCart(props) {
   const deleteItem = useOrderDelete();
   const itemCounterChange = useOrderChange();
-  console.log(props);
   return (
     <div className="row border-top border-bottom">
       <div className="row main align-items-center">
@@ -34,6 +33,12 @@ function ItemCart(props) {
           <div className="row"></div>
         </div>
         <div className="col">
+          <div className="row text-muted">Total</div>
+          <div className="row">$ {props.price * props.quantity}</div>
+          <div className="row"></div>
+        </div>
+
+        <div className="col12">
           <button onClick={() => deleteItem(props.index)}>
             <img src={Delete} alt="delete" style={{ height: '16px' }} />
           </button>

@@ -38,8 +38,8 @@ function SummaryOrder() {
             })}
           </div>
           <div className="back-to-shop">
-            <a href="/ttt">←</a>
-            <span className="text-muted">Back to shop</span>
+            <a href="/">←</a>
+            <span className="text-muted"></span>
           </div>
         </div>
         <div className="col-md-4 summary">
@@ -51,10 +51,11 @@ function SummaryOrder() {
           <hr />
           <div className="row">
             <div className="col" style={{ paddingLeft: 0 }}>
-              ITEMS {Order.length}
+              {' '}
+              Cantidad de Items
             </div>
-            <div className="col text-right">
-              ${Order.reduce((a, b) => a + b.price * b.quantity, 0)}
+            <div className="col text-right fs-3">
+              {Order.reduce((acu, element) => acu + element.quantity, 0)}
             </div>
           </div>
           <form>
@@ -73,7 +74,9 @@ function SummaryOrder() {
             }}
           >
             <div className="col">TOTAL</div>
-            <div className="col text-right">$ 137.00</div>
+            <div className="col text-right">
+              ${Order.reduce((a, b) => a + b.price * b.quantity, 0)}
+            </div>
           </div>{' '}
           <button className="btn btn-dark">Comprar</button>
         </div>
