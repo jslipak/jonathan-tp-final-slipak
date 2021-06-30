@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useAlert } from 'react-alert';
 import Counter from './ItemCount';
 import './BoxItemDetail.css';
 import { useOrder, useOrderUpdate, useOrderChange } from './CartContext';
@@ -8,6 +9,7 @@ function BoxItemDetail(props) {
   const order = useOrder();
   const setOrder = useOrderUpdate();
   const updateOrder = useOrderChange();
+  const alert = useAlert();
   function addOneItem() {
     return setCounter(counter + 1);
   }
@@ -21,7 +23,6 @@ function BoxItemDetail(props) {
     event.preventDefault();
     const index = order.findIndex((element) => element.id === props.productId);
     if (index === -1) {
-      console.log('teauoe');
       setOrder(
         props.productId,
         props.title,
@@ -30,11 +31,14 @@ function BoxItemDetail(props) {
         props.thumb,
         props.category,
       );
+      alert.show(
+        `Se a agredado al carrito:${props.title} con ${counter} unidades!`,
+      );
     } else {
       const cantidad = order[index].quantity + counter;
       updateOrder(cantidad, index);
 
-      console.log(order);
+      alert.show(`Se sumaron ${counter} unidades a ${props.title}!`);
     }
     setCounter(0);
   }

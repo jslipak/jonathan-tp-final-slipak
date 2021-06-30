@@ -2,7 +2,10 @@ import React from 'react';
 import Counter from './ItemCount';
 import Delete from '../images/delete.svg';
 import { useOrderDelete, useOrderChange } from '../components/CartContext';
+import { useAlert } from 'react-alert';
+
 function ItemCart(props) {
+  const alert = useAlert();
   const deleteItem = useOrderDelete();
   const itemCounterChange = useOrderChange();
   return (
@@ -21,9 +24,11 @@ function ItemCart(props) {
             counter={props.quantity}
             subItem={() => {
               itemCounterChange(props.quantity - 1, props.index);
+              alert.success('Se resto un item');
             }}
             addItem={() => {
               itemCounterChange(props.quantity + 1, props.index);
+              alert.success('Se sumo un item');
             }}
           />
         </div>
@@ -39,7 +44,12 @@ function ItemCart(props) {
         </div>
 
         <div className="col12">
-          <button onClick={() => deleteItem(props.index)}>
+          <button
+            onClick={() => {
+              deleteItem(props.index);
+              alert.success('Se borro un producto');
+            }}
+          >
             <img src={Delete} alt="delete" style={{ height: '16px' }} />
           </button>
         </div>

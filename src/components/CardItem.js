@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useAlert } from 'react-alert';
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
 import Counter from './ItemCount.js';
@@ -9,6 +10,7 @@ function CardItem(props) {
   const setOrder = useOrderUpdate();
   const updateOrder = useOrderChange();
   const [counter, setCounter] = useState(0);
+  const alert = useAlert();
 
   function addOneItem() {
     return setCounter(counter + 1);
@@ -31,11 +33,13 @@ function CardItem(props) {
         props.thumb,
         props.category,
       );
+      alert.show(
+        `Se a agredado al carrito:${props.title} con ${counter} unidades!`,
+      );
     } else {
       const cantidad = order[index].quantity + counter;
       updateOrder(cantidad, index);
-
-      console.log(order);
+      alert.show(`Se sumaron ${counter} unidades a ${props.title}!`);
     }
     setCounter(0);
   }
