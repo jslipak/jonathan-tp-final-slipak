@@ -61,5 +61,3 @@ export function CartContext({ children }) {
     </OrderContext.Provider>
   );
 }
-
-//TODO: refactoring to be one context

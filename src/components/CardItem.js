@@ -24,7 +24,6 @@ function CardItem(props) {
     event.preventDefault();
     const index = order.findIndex((element) => element.id === props.productId);
     if (index === -1) {
-      console.log('teauoe');
       setOrder(
         props.productId,
         props.title,

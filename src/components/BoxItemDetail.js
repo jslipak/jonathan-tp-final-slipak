@@ -57,7 +57,7 @@ function BoxItemDetail(props) {
           <div className="half">
             <div className="featured_text">
               <h1>{props.title}</h1>
-              <p className="sub">Office Chair</p>
+              <p className="sub">{props.category}</p>
               <p className="price">$ {props.price}</p>
             </div>
             <div className="justify-content-center ">

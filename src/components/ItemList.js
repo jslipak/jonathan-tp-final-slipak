@@ -2,18 +2,29 @@ import React, { useEffect, useState } from 'react';
 import './ItemList.css';
 import { CardDeck, Spinner } from 'react-bootstrap';
 import CardItem from './CardItem.js';
+import { getFirestore } from '../firebase';
 
 const ItemList = () => {
   const [data, setData] = useState(null);
   useEffect(() => {
-    setTimeout(function () {
-      fetch('https://jslipak.github.io/data/chocolate.json')
-        .then((response) => response.json())
-        .then((data) => {
-          setData(data);
-        })
-        .catch((err) => console.log('catch:', err));
-    }, 2000);
+    const db = getFirestore();
+    const itemCollection = db.collection('items');
+    itemCollection.get().then((querySnapshot) => {
+      if (querySnapshot.size === 0) {
+        console.log('no resultado');
+        setData([]);
+      } else {
+        setData(querySnapshot.docs.map((doc) => doc.data()));
+      }
+    });
+    //setTimeout(function () {
+    //fetch('https://jslipak.github.io/data/chocolate.json')
+    //.then((response) => response.json())
+    //.then((data) => {
+    //setData(data);
+    //})
+    //.catch((err) => console.log('catch:', err));
+    //}, 2000);
   }, []);
 
   return (
@@ -26,7 +37,7 @@ const ItemList = () => {
               title={item.name}
               text={item.description}
               productId={item.id}
-              price={item.precio}
+              price={item.price}
               stock={item.stock}
               photo={item.photo_url}
               thumb={item.thumb}
