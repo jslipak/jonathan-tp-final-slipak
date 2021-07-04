@@ -6,8 +6,10 @@ import Logo from './Logo.js';
 import CartWidget from './CartWidget.js';
 import Envelop from '../images/email.svg';
 import { useOrder } from './CartContext';
+
 export default function NavBar() {
-  let order = useOrder();
+  let Order = useOrder();
+
   return (
     <Navbar collapseOnSelect expand="lg" className="Nav-Style" variant="dark">
       <Logo />
@@ -23,7 +25,7 @@ export default function NavBar() {
           <Nav.Link as={Link} to="/about">
             Nuestra Empresa
           </Nav.Link>
-          {order.length > 0 ? <CartWidget /> : null}
+          {Order.length > 0 ? <CartWidget /> : null}
           <Nav.Link as={Link} to="/contact">
             <img src={Envelop} alt="contactImages" className="EmailContact" />
           </Nav.Link>
@@ -32,5 +34,3 @@ export default function NavBar() {
     </Navbar>
   );
 }
-
-// FIX: if CW mayor a 0 show <CartWidget /> --> ya agregue un useEffect en CartContext

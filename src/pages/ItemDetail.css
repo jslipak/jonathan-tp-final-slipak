@@ -12,7 +12,8 @@ main {
 }
 
 .card {
-  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 1px 0px 38px 7px rgba(0, 0, 0, 0.46);
+  box-shadow: 1px 0px 38px 7px rgba(0, 0, 0, 0.46);
   transition: 200ms;
   background: #fff;
 }
