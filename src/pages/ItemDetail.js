@@ -33,7 +33,7 @@ function ItemDetail() {
           title={data.name}
           text={data.description}
           productId={data.id}
-          price={data.precio}
+          price={data.price}
           stock={data.stock}
           photo={data.photo_url}
           thumb={data.thumb}
