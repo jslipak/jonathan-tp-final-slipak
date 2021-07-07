@@ -22,9 +22,8 @@ function ItemDetail() {
         setData(temp[0]);
       }
     });
-    console.log(data);
     console.log('Change Counter State');
-  }, []);
+  }, [params]);
 
   return (
     <>

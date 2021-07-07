@@ -17,3 +17,12 @@ export function getFirebase() {
 export function getFirestore() {
   return firebase.firestore(app);
 }
+
+export function addItemFirebase(order) {
+  const db = getFirestore();
+  const pushOrder = db.collection('orders');
+  pushOrder
+    .add({ items: order })
+    .then(({ id }) => {})
+    .catch((err) => console.log(err));
+}

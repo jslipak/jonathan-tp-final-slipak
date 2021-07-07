@@ -49,11 +49,15 @@ export function CartContext({ children }) {
     setOrder(tmp);
   };
 
+  const deleteOrder = () => {
+    setOrder([]);
+  };
+
   return (
     <OrderContext.Provider value={order}>
       <OrderUpdateContext.Provider value={insertOrder}>
         <OrderChangeContext.Provider value={changeQuantity}>
-          <OrderDeleteContext.Provider value={deleteOrderItem}>
+          <OrderDeleteContext.Provider value={{ deleteOrderItem, deleteOrder }}>
             {children}
           </OrderDeleteContext.Provider>
         </OrderChangeContext.Provider>

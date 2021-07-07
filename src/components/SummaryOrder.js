@@ -1,10 +1,17 @@
 import React from 'react';
 import './SummaryOrder.css';
 import ItemCart from './ItemCart.js';
-import { useOrder } from '../components/CartContext';
+import { useOrder, useOrderDelete } from '../components/CartContext';
+import { Link, Redirect } from 'react-router-dom';
+import { addItemFirebase } from '../firebase';
+
 function SummaryOrder() {
   const Order = useOrder();
-
+  const { deleteOrder } = useOrderDelete();
+  const btnComprar = () => {
+    addItemFirebase(Order);
+    deleteOrder();
+  };
   return (
     <div className="card">
       <div className="row">
@@ -38,7 +45,7 @@ function SummaryOrder() {
             })}
           </div>
           <div className="back-to-shop">
-            <a href="/">←</a>
+            <Link to="/types-candy">← Productos</Link>
             <span className="text-muted"></span>
           </div>
         </div>
@@ -78,9 +85,17 @@ function SummaryOrder() {
               ${Order.reduce((a, b) => a + b.price * b.quantity, 0)}
             </div>
           </div>{' '}
-          <button className="btn btn-dark">Comprar</button>
+          <div className="d-flex justify-content-around">
+            <button className="btn btn-danger" onClick={deleteOrder}>
+              Vaciar Carrito
+            </button>
+            <button className="btn btn-dark" onClick={btnComprar}>
+              Comprar
+            </button>
+          </div>
         </div>
       </div>
+      {Order.length === 0 && <Redirect to="/types-candy" />}
     </div>
   );
 }

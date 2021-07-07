@@ -6,7 +6,7 @@ import { useAlert } from 'react-alert';
 
 function ItemCart(props) {
   const alert = useAlert();
-  const deleteItem = useOrderDelete();
+  const { deleteOrderItem } = useOrderDelete();
   const itemCounterChange = useOrderChange();
   return (
     <div className="row border-top border-bottom">
@@ -46,7 +46,7 @@ function ItemCart(props) {
         <div className="col12">
           <button
             onClick={() => {
-              deleteItem(props.index);
+              deleteOrderItem(props.index);
               alert.success('Se borro un producto');
             }}
           >

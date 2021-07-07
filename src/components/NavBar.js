@@ -6,6 +6,7 @@ import Logo from './Logo.js';
 import CartWidget from './CartWidget.js';
 import Envelop from '../images/email.svg';
 import { useOrder } from './CartContext';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 
 export default function NavBar() {
   let Order = useOrder();
@@ -20,11 +21,27 @@ export default function NavBar() {
             Inicio
           </Nav.Link>
           <Nav.Link as={Link} to="/types-candy">
-            Golosinas
+            Productos
           </Nav.Link>
-          <Nav.Link as={Link} to="/about">
-            Nuestra Empresa
-          </Nav.Link>
+          <DropdownButton
+            id="dropdown-item-button"
+            title="Categorias"
+            className="nav-link"
+            variant="warning"
+          >
+            <Dropdown.Item as={Link} to="/category/Alfajores">
+              Alfajores
+            </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/category/Chocolates">
+              Chocolates
+            </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/category/Bombones">
+              Bombones
+            </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/category/Galletitas">
+              Galletitas
+            </Dropdown.Item>
+          </DropdownButton>
           {Order.length > 0 ? <CartWidget /> : null}
           <Nav.Link as={Link} to="/contact">
             <img src={Envelop} alt="contactImages" className="EmailContact" />
