@@ -7,7 +7,7 @@ function Jumbo(props) {
       <h1>{props.title}</h1>
       <p>{props.description}</p>
       <p>
-        <Button variant="danger" href="/about">
+        <Button variant="danger" href={props.urlButton}>
           {props.buttonText}
         </Button>
       </p>

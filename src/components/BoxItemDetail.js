@@ -3,8 +3,9 @@ import { useAlert } from 'react-alert';
 import Counter from './ItemCount';
 import './BoxItemDetail.css';
 import { useOrder, useOrderUpdate, useOrderChange } from './CartContext';
-
+import { useHistory } from 'react-router-dom';
 function BoxItemDetail(props) {
+  const history = useHistory();
   const [counter, setCounter] = useState(0);
   const order = useOrder();
   const setOrder = useOrderUpdate();
@@ -46,12 +47,10 @@ function BoxItemDetail(props) {
     <main>
       <div className="card">
         <div className="card__title">
-          <div className="icon">
-            <a href="/notFound">
-              <i className="fa fa-arrow-left"></i>
-            </a>
-          </div>
-          <h3>New products</h3>
+          <button onClick={history.goBack} className="icon bnt bnt-light ">
+            <i className="fa fa-arrow-left">Volver</i>
+          </button>
+          <h3>{props.category}</h3>
         </div>
         <div className="card__body">
           <div className="half">

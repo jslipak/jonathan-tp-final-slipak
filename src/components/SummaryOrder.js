@@ -4,13 +4,20 @@ import ItemCart from './ItemCart.js';
 import { useOrder, useOrderDelete } from '../components/CartContext';
 import { Link, Redirect } from 'react-router-dom';
 import { addItemFirebase } from '../firebase';
+import { useAlert } from 'react-alert';
 
 function SummaryOrder() {
+  const alert = useAlert();
   const Order = useOrder();
   const { deleteOrder } = useOrderDelete();
   const btnComprar = () => {
     addItemFirebase(Order);
     deleteOrder();
+    alert.success('Gracias por su compra!');
+  };
+  const btnDelete = () => {
+    deleteOrder();
+    alert.success('Se ha vaciado el carrito');
   };
   return (
     <div className="card">
@@ -86,7 +93,7 @@ function SummaryOrder() {
             </div>
           </div>{' '}
           <div className="d-flex justify-content-around">
-            <button className="btn btn-danger" onClick={deleteOrder}>
+            <button className="btn btn-danger" onClick={btnDelete}>
               Vaciar Carrito
             </button>
             <button className="btn btn-dark" onClick={btnComprar}>
