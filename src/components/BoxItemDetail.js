@@ -42,6 +42,7 @@ function BoxItemDetail(props) {
       alert.show(`Se sumaron ${counter} unidades a ${props.title}!`);
     }
     setCounter(0);
+    history.goBack();
   }
   return (
     <main>

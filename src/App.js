@@ -16,8 +16,8 @@ import AlertTemplate from 'react-alert-template-basic';
 
 function App() {
   const options = {
-    timeout: 2000,
-    position: positions.TOP_RIGHT,
+    timeout: 3000,
+    position: positions.MIDDLE,
   };
   return (
     <Router>
