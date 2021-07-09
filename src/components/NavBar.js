@@ -41,6 +41,9 @@ export default function NavBar() {
             <Dropdown.Item as={Link} to="/category/Galletitas">
               Galletitas
             </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/category/Helados">
+              Helados
+            </Dropdown.Item>
           </DropdownButton>
           {Order.length > 0 ? <CartWidget /> : null}
           <Nav.Link as={Link} to="/contact">

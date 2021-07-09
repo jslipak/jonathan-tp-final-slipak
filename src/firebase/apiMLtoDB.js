@@ -13,7 +13,7 @@ firebase.initializeApp({
 
 const db = firebase.firestore();
 
-fetch('https://api.mercadolibre.com/sites/MLA/search?q=Bombones')
+fetch('https://api.mercadolibre.com/sites/MLA/search?q=helados')
   .then((data) => data.json())
   .then((data) => {
     const temp = data.results;
@@ -24,7 +24,7 @@ fetch('https://api.mercadolibre.com/sites/MLA/search?q=Bombones')
           id: obj.id,
           name: obj.title,
           price: obj.price,
-          category: 'Bombones',
+          category: 'Helados',
           stock: obj.available_quantity,
           photo_url: obj.thumbnail,
           thumb: obj.thumbnail,
