@@ -10,11 +10,11 @@ function SummaryOrder() {
   const alert = useAlert();
   const Order = useOrder();
   const { deleteOrder } = useOrderDelete();
-  const btnComprar = () => {
-    addItemFirebase(Order);
+  async function btnComprar() {
+    let idTest = await addItemFirebase(Order);
     deleteOrder();
-    alert.success('Gracias por su compra!');
-  };
+    return alert.success(`Orden numero:${idTest}, Gracias por su compra!`);
+  }
   const btnDelete = () => {
     deleteOrder();
     alert.success('Se ha vaciado el carrito');
