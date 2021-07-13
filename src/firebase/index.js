@@ -18,11 +18,11 @@ export function getFirestore() {
   return firebase.firestore(app);
 }
 
-export function addItemFirebase(order) {
+export function addItemFirebase(order, buyer) {
   const db = getFirestore();
   const pushOrder = db.collection('orders');
   const tempId = pushOrder
-    .add({ items: order })
+    .add({ buyer: buyer, items: order })
     .then(({ id }) => {
       return id;
     })

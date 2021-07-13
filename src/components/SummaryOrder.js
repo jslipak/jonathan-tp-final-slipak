@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SummaryOrder.css';
 import ItemCart from './ItemCart.js';
 import { useOrder, useOrderDelete } from '../components/CartContext';
@@ -7,6 +7,7 @@ import { addItemFirebase } from '../firebase';
 import { useAlert } from 'react-alert';
 
 function SummaryOrder() {
+  const [buyer, setBuyer] = useState({});
   const alert = useAlert();
   const Order = useOrder();
   const { deleteOrder } = useOrderDelete();
@@ -14,7 +15,7 @@ function SummaryOrder() {
     event.preventDefault();
     alert.info('Su orden esta siendo procesada, \n Espere!');
     event.target.disabled = true;
-    addItemFirebase(Order).then((id) => {
+    addItemFirebase(Order, buyer).then((id) => {
       deleteOrder();
       alert.success(`Orden numero: \n ${id},\n Gracias por su compra!`);
     });
@@ -22,6 +23,27 @@ function SummaryOrder() {
   const btnDelete = () => {
     deleteOrder();
     alert.success('Se ha vaciado el carrito');
+  };
+
+  const makeBuyer = (event, type) => {
+    console.log(event);
+    let temp = { ...buyer };
+    switch (type) {
+      case 'name':
+        temp.name = event.target.value;
+        break;
+      case 'email':
+        temp.email = event.target.value;
+        break;
+      case 'phone':
+        temp.phone = event.target.value;
+        break;
+      default:
+        console.log(temp);
+    }
+
+    console.log(temp);
+    setBuyer(temp);
   };
   return (
     <div className="card">
@@ -77,10 +99,29 @@ function SummaryOrder() {
             </div>
           </div>
           <form onSubmit={btnComprar}>
-            <p>Nombre</p> <input type="text" className="text-muted" required />
-            <p>Email</p> <input type="email" className="text-muted" required />
+            <p>Nombre</p>{' '}
+            <input
+              onChange={(e) => {
+                makeBuyer(e, 'name');
+              }}
+              type="text"
+              className="text-muted"
+              required
+            />
+            <p>Email</p>{' '}
+            <input
+              onChange={(e) => makeBuyer(e, 'email')}
+              type="email"
+              className="text-muted"
+              required
+            />
             <p>Teléfono</p>{' '}
-            <input type="text" className="text-muted" required />
+            <input
+              onChange={(e) => makeBuyer(e, 'phone')}
+              type="text"
+              className="text-muted"
+              required
+            />
             <div
               className="row"
               style={{
