@@ -3,27 +3,20 @@ import { useParams } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 import BoxItemDetail from '../components/BoxItemDetail';
 import './ItemDetail.css';
-import { getFirestore } from '../firebase';
+import { getOneId } from '../firebase';
 
 function ItemDetail() {
   const [data, setData] = useState(null);
   const params = useParams();
   const item_id = params.product_id;
+
   useEffect(() => {
-    const db = getFirestore();
-    const itemCollection = db.collection('items');
-    const oneItem = itemCollection.where('id', '==', item_id);
-    oneItem.get().then((querySnapshot) => {
-      if (querySnapshot.size === 0) {
-        console.log('no resultado');
-        setData([]);
-      } else {
-        const temp = querySnapshot.docs.map((doc) => doc.data());
+    getOneId(item_id, 'items')
+      .then((temp) => {
         setData(temp[0]);
-      }
-    });
-    console.log('Change Counter State');
-  }, [params]);
+      })
+      .catch((err) => console.error(err));
+  }, [item_id]);
 
   return (
     <>

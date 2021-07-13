@@ -18,13 +18,28 @@ export function getFirestore() {
   return firebase.firestore(app);
 }
 
-export async function addItemFirebase(order) {
+export function addItemFirebase(order) {
   const db = getFirestore();
   const pushOrder = db.collection('orders');
-  pushOrder
+  const tempId = pushOrder
     .add({ items: order })
     .then(({ id }) => {
       return id;
     })
     .catch((err) => console.log(err));
+  return tempId;
+}
+
+export async function getOneId(id, collection) {
+  const db = getFirestore();
+  const itemCollection = db.collection(collection);
+  const Item = itemCollection.where('id', '==', id);
+  return Item.get().then((querySnapshot) => {
+    if (querySnapshot.size === 0) {
+      return ['test', 'no anda'];
+    } else {
+      console.log(querySnapshot.docs.map((doc) => doc.data()));
+      return querySnapshot.docs.map((doc) => doc.data());
+    }
+  });
 }

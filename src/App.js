@@ -16,7 +16,7 @@ import AlertTemplate from 'react-alert-template-basic';
 
 function App() {
   const options = {
-    timeout: 3000,
+    timeout: 2000,
     position: positions.MIDDLE,
   };
   return (
@@ -54,5 +54,3 @@ function App() {
 }
 
 export default App;
-
-// NOTE: Si pones el context no global cuando vas una de las rutas que no esta wrapeada se blanquea la orden
