@@ -8,11 +8,4 @@
   4. Cart.js --> Falta implementar Render (url: /cart)
   5. NotFound.js --> errop 404 falta implementar render (url: todos menos los de arriba)
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCzs_ckTS_ONOG0cZQpa0bftafmJCQTEJk",
-  authDomain: "candystore-jls.firebaseapp.com",
-  projectId: "candystore-jls",
-  storageBucket: "candystore-jls.appspot.com",
-  messagingSenderId: "411951059473",
-  appId: "1:411951059473:web:551466f4db4eaf699717b0"
-};
+
