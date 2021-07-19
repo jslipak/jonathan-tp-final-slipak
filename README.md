@@ -1,5 +1,4 @@
 # 80th FOOD Store (old vintage Candies)
-
 ## Resumen
 - Es un proyecto creado en React para mi Portfolio , el mismo esta hecha en React.
 - De motor de base de dato esta hechor en firebase
@@ -13,3 +12,6 @@
     -ej en la raiz ejecutar --> echo export SENDGRID_API_KEY='YOUR_API_KEY ' >> endgrid env
 
 ##Nota deje desactivada sendgrid en './src/sendgrid/index.js' para que pueda correr si no hacen los pasos del mail
+
+![Alt gift](./gifTh80.gif)
+
