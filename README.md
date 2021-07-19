@@ -1,11 +1,13 @@
 # 80th FOOD Store (old vintage Candies)
 
-## Primera entrega Candy Store
-1. La misma cuenta con 5 paginas que son manejadas con REACT ROUTER (/src/pages):
-  1. Home.js --> falta implementar render (url: /)
-  2. Candies.js --> una pagina donde muestra tipo de golocinas (url: /types-candy)
-  3. About.js --> falta implementar render (url: /about)
-  4. Cart.js --> Falta implementar Render (url: /cart)
-  5. NotFound.js --> errop 404 falta implementar render (url: todos menos los de arriba)
-
-
+## Resumen
+- Es un proyecto creado en React para mi Portfolio , el mismo esta hecha en React.
+- De motor de base de dato esta hechor en firebase
+  - En el archivo de "./src/firebase/index.js" recuerde cambiar sus credenciales. Les mias estaran vencidas o pronto a vencer
+  - Dentro de la carpeta firebase tiene 2 archivos para importar datas a la base de datos:
+    - uno desde la api de mercado libre.
+    - el otro desde un objtos
+- Tiene configurado una api para mandar mail , esta API es SendGrid by twlio.
+  - Para usar la misma luego de clonarla hay que crear un archivo en la raiz del proyecto "sendgrid.env"
+    - Recuerde crear su cuenta y validar su email para que pueda usar esta funcionalidad
+    -ej en la raiz ejecutar --> echo export SENDGRID_API_KEY='YOUR_API_KEY ' >> [sendgrid env](sendgrid.env)
