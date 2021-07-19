@@ -10,4 +10,6 @@
 - Tiene configurado una api para mandar mail , esta API es SendGrid by twlio.
   - Para usar la misma luego de clonarla hay que crear un archivo en la raiz del proyecto "sendgrid.env"
     - Recuerde crear su cuenta y validar su email para que pueda usar esta funcionalidad
-    -ej en la raiz ejecutar --> echo export SENDGRID_API_KEY='YOUR_API_KEY ' >> [sendgrid env](sendgrid.env)
+    -ej en la raiz ejecutar --> echo export SENDGRID_API_KEY='YOUR_API_KEY ' >> endgrid env
+
+##Nota deje desactivada sendgrid en './src/sendgrid/index.js' para que pueda correr si no hacen los pasos del mail

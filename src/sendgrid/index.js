@@ -1,8 +1,7 @@
 import env from 'react-dotenv';
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(env.SENDGRID_API_KEY);
-//sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-//ES6
+//si vas a usar mail descomentar esta linea y generar usuario y validaciones en sendgrid
+//sgMail.setApiKey(env.SENDGRID_API_KEY);
 export const sendMail = (text) => {
   const msg = {
     to: 'seriedigital@gmail.com',

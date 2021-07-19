@@ -91,7 +91,6 @@ function SummaryOrder() {
           <hr />
           <div className="row">
             <div className="col" style={{ paddingLeft: 0 }}>
-              {' '}
               Cantidad de Items
             </div>
             <div className="col text-right fs-3">
